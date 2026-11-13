@@ -1,0 +1,10 @@
+{
+  "product": "Home Intelligence Manager",
+  "release": "1.0.0",
+  "integration_domain": "ai_automation_suggester",
+  "integration_version": "1.7.0",
+  "interface": "Home Assistant",
+  "deployment_enabled": false,
+  "installation": "custom_component",
+  "tests_passed": 12
+}

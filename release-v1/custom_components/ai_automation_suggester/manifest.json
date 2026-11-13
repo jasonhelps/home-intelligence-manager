@@ -1,0 +1,17 @@
+{
+  "domain": "ai_automation_suggester",
+  "name": "AI Automation Suggester",
+  "codeowners": ["@ITSpecialist111"],
+  "config_flow": true,
+  "dependencies": ["http"],
+  "documentation": "https://github.com/ITSpecialist111/ai_automation_suggester",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/ITSpecialist111/ai_automation_suggester/issues",
+  "requirements": [
+    "anthropic>=0.8.0",
+    "litellm>=1.67.0",
+    "voluptuous>=0.13.1"
+  ],
+  "version": "1.7.0"
+}

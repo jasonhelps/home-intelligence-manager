@@ -1,0 +1,151 @@
+generate_suggestions:
+  name: Generate Suggestions
+  description: "Manually trigger AI automation suggestions."
+  fields:
+    provider_config:
+      name: Provider Configuration
+      description: Which provider configuration to use (if you have multiple configured)
+      required: false
+      selector:
+        config_entry:
+          integration: ai_automation_suggester
+    custom_prompt:
+      name: Custom Prompt
+      description: Optional custom prompt to override or enhance the default system prompt.
+      required: false
+      example: "Focus on energy-saving automations"
+      selector:
+        text:
+          multiline: true
+    all_entities:
+      name: Consider All Entities
+      description: "If true, consider all entities instead of just new entities."
+      required: false
+      default: false
+      example: false
+      selector:
+        boolean: {}
+    domains:
+      name: Domains
+      description: "List of domains to consider. If empty, consider all domains."
+      required: false
+      default: []
+      selector:
+        select:
+          multiple: true
+          custom_value: true
+          options:
+            - light
+            - switch
+            - sensor
+            - binary_sensor
+            - climate
+            - cover
+            - media_player
+            - lock
+            - alarm_control_panel
+    exclude_domains:
+      name: Exclude Domains
+      description: "Domains to exclude from analysis, even when all entities are considered."
+      required: false
+      default: []
+      selector:
+        select:
+          multiple: true
+          custom_value: true
+          options:
+            - automation
+            - update
+            - button
+            - event
+    exclude_entities:
+      name: Exclude Entities
+      description: "Specific entity IDs to exclude from analysis."
+      required: false
+      default: []
+      selector:
+        entity:
+          multiple: true
+    exclude_areas:
+      name: Exclude Areas
+      description: "Area IDs or area names to exclude from analysis."
+      required: false
+      default: []
+      selector:
+        area:
+          multiple: true
+    entity_limit:
+      name: Entity Limit
+      description: "Maximum number of entities to consider (randomly selected from the chosen domains)."
+      required: false
+      default: 200
+      example: 200
+      selector:
+        number:
+          min: 50
+          max: 1000
+          mode: slider
+    automation_read_yaml:
+      name: Read 'automations.yaml' file.
+      description: "Reads and appends the yaml code of the automations found in the automations.yaml file. This action will use a lot of input tokens, use it with care and with models with a large input window (e.g. Gemini)."
+      required: false
+      default: false
+      example: false
+      selector:
+        boolean: {}
+    automation_limit:
+      name: Automation Limit
+      description: "Maximum number of automations to analyze (default: 100)."
+      required: false
+      default: 100
+      example: 100
+      selector:
+        number:
+          min: 10
+          max: 500
+          mode: slider
+    script_read_yaml:
+      name: Read 'scripts.yaml' file.
+      description: "Reads and appends the yaml code of the scripts found in the scripts.yaml file. This action will use a lot of input tokens, use it with care and with models with a large input window (e.g. Gemini)."
+      required: false
+      default: false
+      example: false
+      selector:
+        boolean: {}
+    script_limit:
+      name: Script Limit
+      description: "Maximum number of scripts to analyze (default: 100)."
+      required: false
+      default: 100
+      example: 100
+      selector:
+        number:
+          min: 10
+          max: 500
+          mode: slider
+        
+clear_history:
+  name: Clear Suggestion History
+  description: "Clear all stored AI automation suggestions."
+
+update_suggestion:
+  name: Update Suggestion
+  description: "Update the review status for a stored AI automation suggestion."
+  fields:
+    suggestion_id:
+      name: Suggestion ID
+      description: "The suggestion ID to update."
+      required: true
+      selector:
+        text: {}
+    status:
+      name: Status
+      description: "New review status for the suggestion."
+      required: true
+      selector:
+        select:
+          options:
+            - new
+            - accepted
+            - declined
+            - dismissed

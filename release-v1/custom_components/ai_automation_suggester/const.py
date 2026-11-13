@@ -1,0 +1,220 @@
+"""Constants for the AI Automation Suggester integration."""
+
+# ─────────────────────────────────────────────────────────────
+# Core
+# ─────────────────────────────────────────────────────────────
+DOMAIN           = "ai_automation_suggester"
+PLATFORMS        = ["sensor"]
+CONFIG_VERSION   = 3  # config-entry version (used by async_migrate_entry)
+INTEGRATION_NAME = "AI Automation Suggester"
+
+# ─────────────────────────────────────────────────────────────
+# Token budgeting
+# ─────────────────────────────────────────────────────────────
+# Single legacy knob (kept for backward compatibility)
+CONF_MAX_TOKENS = "max_tokens"
+DEFAULT_MAX_TOKENS = 500  # legacy default – used for both budgets if new keys absent
+
+# New, separate knobs (Issue #91)
+CONF_MAX_INPUT_TOKENS = "max_input_tokens"  # how much of the prompt we keep
+CONF_MAX_OUTPUT_TOKENS = "max_output_tokens"  # how long the AI response may be
+
+DEFAULT_MAX_INPUT_TOKENS = DEFAULT_MAX_TOKENS
+DEFAULT_MAX_OUTPUT_TOKENS = DEFAULT_MAX_TOKENS
+
+DEFAULT_TEMPERATURE = 0.7
+DEFAULT_REQUEST_TIMEOUT = 900
+DEFAULT_HISTORY_RETENTION = 25
+DEFAULT_OPENAI_REASONING_EFFORT = "low"
+
+# ─────────────────────────────────────────────────────────────
+# Provider‑selection key
+# ─────────────────────────────────────────────────────────────
+CONF_PROVIDER = "provider"
+CONF_CUSTOM_SYSTEM_PROMPT = "custom_system_prompt"
+CONF_EXCLUDED_DOMAINS = "excluded_domains"
+CONF_EXCLUDED_ENTITIES = "excluded_entities"
+CONF_EXCLUDED_AREAS = "excluded_areas"
+CONF_HISTORY_RETENTION = "history_retention"
+CONF_REQUEST_TIMEOUT = "request_timeout"
+
+# ─────────────────────────────────────────────────────────────
+# Provider‑specific keys
+# ─────────────────────────────────────────────────────────────
+# OpenAI
+CONF_OPENAI_API_KEY = "openai_api_key"
+CONF_OPENAI_MODEL = "openai_model"
+CONF_OPENAI_TEMPERATURE = "openai_temperature"
+CONF_OPENAI_REASONING_EFFORT = "openai_reasoning_effort"
+
+# OpenAI Azure
+CONF_OPENAI_AZURE_API_KEY = "openai_azure_api_key"
+CONF_OPENAI_AZURE_DEPLOYMENT_ID = "openai_azure_deployment_id"
+CONF_OPENAI_AZURE_API_VERSION = "openai_azure_api_version"
+CONF_OPENAI_AZURE_ENDPOINT = "openai_azure_endpoint"
+CONF_OPENAI_AZURE_TEMPERATURE = "openai_azure_temperature"
+
+# Anthropic
+CONF_ANTHROPIC_API_KEY = "anthropic_api_key"
+CONF_ANTHROPIC_MODEL = "anthropic_model"
+CONF_ANTHROPIC_TEMPERATURE = "anthropic_temperature"
+VERSION_ANTHROPIC = "2023-06-01"
+
+# Google
+CONF_GOOGLE_API_KEY = "google_api_key"
+CONF_GOOGLE_MODEL = "google_model"
+CONF_GOOGLE_TEMPERATURE = "google_temperature"
+
+# Groq
+CONF_GROQ_API_KEY = "groq_api_key"
+CONF_GROQ_MODEL = "groq_model"
+CONF_GROQ_TEMPERATURE = "groq_temperature"
+
+# LocalAI
+CONF_LOCALAI_IP_ADDRESS = "localai_ip"
+CONF_LOCALAI_PORT = "localai_port"
+CONF_LOCALAI_HTTPS = "localai_https"
+CONF_LOCALAI_MODEL = "localai_model"
+CONF_LOCALAI_TEMPERATURE = "localai_temperature"
+
+# Ollama
+CONF_OLLAMA_IP_ADDRESS = "ollama_ip"
+CONF_OLLAMA_PORT = "ollama_port"
+CONF_OLLAMA_HTTPS = "ollama_https"
+CONF_OLLAMA_BASE_URL = "ollama_base_url"
+CONF_OLLAMA_API_KEY = "ollama_api_key"
+CONF_OLLAMA_MODEL = "ollama_model"
+CONF_OLLAMA_TEMPERATURE = "ollama_temperature"
+CONF_OLLAMA_DISABLE_THINK = "ollama_disable_think"
+
+# Custom OpenAI
+CONF_CUSTOM_OPENAI_ENDPOINT = "custom_openai_endpoint"
+CONF_CUSTOM_OPENAI_API_KEY = "custom_openai_api_key"
+CONF_CUSTOM_OPENAI_MODEL = "custom_openai_model"
+CONF_CUSTOM_OPENAI_TEMPERATURE = "custom_openai_temperature"
+
+# Mistral AI
+CONF_MISTRAL_API_KEY = "mistral_api_key"
+CONF_MISTRAL_MODEL = "mistral_model"
+CONF_MISTRAL_TEMPERATURE = "mistral_temperature"
+MISTRAL_MODELS = [
+    "mistral-small-latest",
+    "mistral-medium-latest",
+    "mistral-large-latest",
+    "ministral-8b-latest",
+    "codestral-latest",
+]
+
+# Perplexity AI
+CONF_PERPLEXITY_API_KEY = "perplexity_api_key"
+CONF_PERPLEXITY_MODEL = "perplexity_model"
+CONF_PERPLEXITY_TEMPERATURE = "perplexity_temperature"
+
+# OpenRouter
+CONF_OPENROUTER_API_KEY = "openrouter_api_key"
+CONF_OPENROUTER_MODEL = "openrouter_model"
+CONF_OPENROUTER_REASONING_MAX_TOKENS = "openrouter_reasoning_max_tokens"
+CONF_OPENROUTER_TEMPERATURE = "openrouter_temperature"
+
+# Requesty
+CONF_REQUESTY_API_KEY = "requesty_api_key"
+CONF_REQUESTY_MODEL = "requesty_model"
+CONF_REQUESTY_REASONING_MAX_TOKENS = "requesty_reasoning_max_tokens"
+CONF_REQUESTY_TEMPERATURE = "requesty_temperature"
+
+# MiniMax
+CONF_MINIMAX_API_KEY = "minimax_api_key"
+CONF_MINIMAX_MODEL = "minimax_model"
+CONF_MINIMAX_BASE_URL = "minimax_base_url"
+CONF_MINIMAX_TEMPERATURE = "minimax_temperature"
+
+# Cheaper Inference
+CONF_CHEAPERINFERENCE_API_KEY = "cheaperinference_api_key"
+CONF_CHEAPERINFERENCE_MODEL = "cheaperinference_model"
+CONF_CHEAPERINFERENCE_REASONING_MAX_TOKENS = "cheaperinference_reasoning_max_tokens"
+CONF_CHEAPERINFERENCE_TEMPERATURE = "cheaperinference_temperature"
+
+# Generic OpenAI
+CONF_GENERIC_OPENAI_ENDPOINT = "generic_openai_api_endpoint"
+CONF_GENERIC_OPENAI_API_KEY = "generic_openai_api_key"
+CONF_GENERIC_OPENAI_MODEL = "generic_openai_model"
+CONF_GENERIC_OPENAI_TEMPERATURE = "generic_openai_temperature"
+CONF_GENERIC_OPENAI_VALIDATION_ENDPOINT = "generic_openai_validation_endpoint"
+CONF_GENERIC_OPENAI_ENABLE_VALIDATION = "generic_openai_enable_validation"
+
+# LiteLLM
+CONF_LITELLM_API_KEY = "litellm_api_key"
+CONF_LITELLM_MODEL = "litellm_model"
+CONF_LITELLM_TEMPERATURE = "litellm_temperature"
+CONF_LITELLM_API_BASE = "litellm_api_base"
+
+# ─────────────────────────────────────────────────────────────
+# Model defaults per provider
+# ─────────────────────────────────────────────────────────────
+DEFAULT_MODELS = {
+    "OpenAI": "gpt-5.4-mini",
+    "OpenAI Azure": "gpt-5.4-mini",
+    "Anthropic": "claude-sonnet-5-5",
+    "Google": "gemini-3.5-flash",
+    "Groq": "openai/gpt-oss-120b",
+    "LocalAI": "llama3",
+    "Ollama": "llama3.1",
+    "Custom OpenAI": "gpt-4o-mini",
+    "Mistral AI": "mistral-small-latest",
+    "Perplexity AI": "sonar",
+    "OpenRouter": "openai/gpt-5.4-mini",
+    "Requesty": "openai/gpt-4o-mini",
+    "MiniMax": "MiniMax-M3.1-Flash",
+    "Cheaper Inference": "gpt-5.4-mini",
+    "Generic OpenAI": "gpt-4o-mini",
+    "LiteLLM": "openai/gpt-4o-mini",
+}
+
+# ─────────────────────────────────────────────────────────────
+# Service & attribute names
+# ─────────────────────────────────────────────────────────────
+ATTR_PROVIDER_CONFIG = "provider_config"
+ATTR_CUSTOM_PROMPT = "custom_prompt"
+SERVICE_GENERATE_SUGGESTIONS = "generate_suggestions"
+SERVICE_CLEAR_HISTORY = "clear_history"
+SERVICE_UPDATE_SUGGESTION = "update_suggestion"
+
+# ─────────────────────────────────────────────────────────────
+# Provider‑status sensor values
+# ─────────────────────────────────────────────────────────────
+PROVIDER_STATUS_CONNECTED = "connected"
+PROVIDER_STATUS_DISCONNECTED = "disconnected"
+PROVIDER_STATUS_ERROR        = "error"
+PROVIDER_STATUS_INITIALIZING = "initializing"
+
+# ─────────────────────────────────────────────────────────────
+# REST endpoints
+# ─────────────────────────────────────────────────────────────
+ENDPOINT_OPENAI = "https://api.openai.com/v1/chat/completions"
+ENDPOINT_OPENAI_AZURE = "https://{endpoint}/openai/deployments/{deployment-id}/chat/completions?api-version={api_version}"
+ENDPOINT_ANTHROPIC = "https://api.anthropic.com/v1/messages"
+ENDPOINT_GOOGLE = "https://generativelanguage.googleapis.com/v1beta2/models/{model}:generateText?key={api_key}"
+ENDPOINT_GROQ = "https://api.groq.com/openai/v1/chat/completions"
+ENDPOINT_LOCALAI = "{protocol}://{ip_address}:{port}/v1/chat/completions"
+ENDPOINT_OLLAMA = "{protocol}://{ip_address}:{port}/api/chat"
+ENDPOINT_MISTRAL = "https://api.mistral.ai/v1/chat/completions"
+ENDPOINT_PERPLEXITY = "https://api.perplexity.ai/chat/completions"
+ENDPOINT_OPENROUTER = "https://openrouter.ai/api/v1/chat/completions"
+ENDPOINT_REQUESTY = "https://router.requesty.ai/v1/chat/completions"
+MINIMAX_BASE_URLS = [
+    "https://api.minimax.io/v1",
+    "https://api.minimaxi.com/v1",
+]
+ENDPOINT_CHEAPERINFERENCE = "https://api.cheaperinference.com/v1/chat/completions"
+
+
+# ─────────────────────────────────────────────────────────────
+# Sensor Keys
+# ─────────────────────────────────────────────────────────────
+SENSOR_KEY_SUGGESTIONS = "suggestions"
+SENSOR_KEY_STATUS = "status"
+SENSOR_KEY_INPUT_TOKENS = "input_tokens"
+SENSOR_KEY_OUTPUT_TOKENS = "output_tokens"
+SENSOR_KEY_MODEL = "model"
+SENSOR_KEY_LAST_ERROR = "last_error"
+SENSOR_KEY_HISTORY_COUNT = "history_count"
